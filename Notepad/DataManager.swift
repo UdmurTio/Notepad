@@ -15,4 +15,10 @@ class DataManager {
             realm.add(newNote)
         }
     }
+    
+    static func deleteData(_ deletedNote: Note) {
+        try! realm.write {
+            realm.delete(deletedNote)
+        }
+    }
 }

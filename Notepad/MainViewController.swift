@@ -18,8 +18,6 @@ class MainViewController: UITableViewController {
         notes = realm.objects(Note.self)
     }
 
-    // MARK: - Table view data source
-
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -37,6 +35,46 @@ class MainViewController: UITableViewController {
 
         return cell
     }
+    
+    func delete(rowIndexPathAt indexPath: IndexPath) -> UIContextualAction {
+        let action = UIContextualAction(style: .destructive, title: "Delete") { [weak self] (_, _, _) in
+            guard let self = self else {return}
+            let note = self.notes[indexPath.row]
+            DataManager.deleteData(note)
+            self.tableView.deleteRows(at: [indexPath], with: .automatic)
+            self.tableView.reloadData()
+        }
+        
+        return action
+    }
+
+    func edit(rowIndexPath indexPath: IndexPath) -> UIContextualAction {
+        let action = UIContextualAction(style: .normal, title: "Edit") { [weak self] (_, _, _) in
+            let alert = UIAlertController(title: "Do you wand to edit", message: "grgege", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: .default))
+            self?.present(alert, animated: true)
+        }
+        
+        return action
+    }
+    
+    override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let edit = self.edit(rowIndexPath: indexPath)
+        let delete = self.delete(rowIndexPathAt: indexPath)
+        let swipe = UISwipeActionsConfiguration(actions: [delete, edit])
+        
+        return swipe
+    }
+    
+//    override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+//        let note = notes[indexPath.row]
+//        let deleteDataAction = UITableViewRowAction(style: .default, title: "Delete") { (_, _) in
+//            DataManager.deleteData(note)
+//            tableView.deleteRows(at: [indexPath], with: UITableView.RowAnimation.automatic)
+//        }
+//
+//        return [deleteDataAction]
+//    }
     
     @IBAction func unwindSegue(_ segue: UIStoryboardSegue) {
         tableView.reloadData()

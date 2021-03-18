@@ -25,7 +25,6 @@ class NewNoteTableViewController: UITableViewController {
     @IBAction func cancelButtonAction(_ sender: Any) {
         dismiss(animated: true)
     }
-    // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
