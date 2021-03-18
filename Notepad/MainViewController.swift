@@ -10,8 +10,12 @@ import RealmSwift
 
 class MainViewController: UITableViewController {
 
+    var notes: Results<Note>!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        notes = realm.objects(Note.self)
     }
 
     // MARK: - Table view data source
@@ -21,13 +25,15 @@ class MainViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return notes.isEmpty ? 0 : notes.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-
-        // Configure the cell...
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! CustomTableViewCell
+        
+        cell.themeLabel.text = notes[indexPath.row].theme
+        cell.dateLabel.text = notes[indexPath.row].date
+        cell.mainTextLabel.text = notes[indexPath.row].text
 
         return cell
     }

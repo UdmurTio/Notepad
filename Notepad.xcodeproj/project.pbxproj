@@ -15,6 +15,7 @@
 		849B68E125F8614A00887103 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849B68E025F8614A00887103 /* MainViewController.swift */; };
 		849B68E425F861CD00887103 /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849B68E325F861CD00887103 /* Note.swift */; };
 		849B68E825F8666700887103 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849B68E725F8666700887103 /* DataManager.swift */; };
+		84EC68852603A63F00A32346 /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EC68842603A63F00A32346 /* CustomTableViewCell.swift */; };
 		E2D351C6FA331F2E47A54D87 /* Pods_Notepad.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68476A1767BFEA61D1454CF8 /* Pods_Notepad.framework */; };
 /* End PBXBuildFile section */
 
@@ -30,6 +31,7 @@
 		849B68E025F8614A00887103 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		849B68E325F861CD00887103 /* Note.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
 		849B68E725F8666700887103 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
+		84EC68842603A63F00A32346 /* CustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
 		8D6FDEF58E62FD403F68F398 /* Pods-Notepad.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Notepad.release.xcconfig"; path = "Target Support Files/Pods-Notepad/Pods-Notepad.release.xcconfig"; sourceTree = "<group>"; };
 		D84FC3E44B78C391DD768D71 /* Pods-Notepad.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Notepad.debug.xcconfig"; path = "Target Support Files/Pods-Notepad/Pods-Notepad.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -70,6 +72,7 @@
 				849B68C325F85D9500887103 /* AppDelegate.swift */,
 				849B68C525F85D9500887103 /* SceneDelegate.swift */,
 				849B68E025F8614A00887103 /* MainViewController.swift */,
+				84EC68842603A63F00A32346 /* CustomTableViewCell.swift */,
 				849B68E325F861CD00887103 /* Note.swift */,
 				849B68E725F8666700887103 /* DataManager.swift */,
 				849B68C925F85D9500887103 /* Main.storyboard */,
@@ -211,6 +214,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84EC68852603A63F00A32346 /* CustomTableViewCell.swift in Sources */,
 				849B68E125F8614A00887103 /* MainViewController.swift in Sources */,
 				849B68E825F8666700887103 /* DataManager.swift in Sources */,
 				849B68C425F85D9500887103 /* AppDelegate.swift in Sources */,
