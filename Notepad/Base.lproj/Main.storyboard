@@ -24,27 +24,27 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="yoX-ez-4Tm">
-                                            <rect key="frame" x="20" y="1.5" width="107.5" height="57.5"/>
+                                            <rect key="frame" x="20" y="1.5" width="108.5" height="57.5"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Default theme" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GlR-8y-bju">
-                                                    <rect key="frame" x="0.0" y="0.0" width="107.5" height="37"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="108.5" height="37"/>
+                                                    <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Default date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Til-8e-WLn">
-                                                    <rect key="frame" x="0.0" y="37" width="107.5" height="20.5"/>
+                                                    <rect key="frame" x="0.0" y="37" width="108.5" height="20.5"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="20.5" id="wh3-58-1pT"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                         </stackView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Default text" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P2G-Xh-cjV">
-                                            <rect key="frame" x="163" y="11" width="88" height="38"/>
+                                            <rect key="frame" x="143.5" y="11" width="88" height="38"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -53,10 +53,10 @@
                                     <constraints>
                                         <constraint firstAttribute="bottom" secondItem="yoX-ez-4Tm" secondAttribute="bottom" constant="1" id="23O-ry-VBA"/>
                                         <constraint firstItem="yoX-ez-4Tm" firstAttribute="top" secondItem="2Nw-VB-xv2" secondAttribute="top" constant="1.5" id="3Md-1b-5ms"/>
-                                        <constraint firstItem="P2G-Xh-cjV" firstAttribute="leading" secondItem="yoX-ez-4Tm" secondAttribute="trailing" constant="35.5" id="46E-4q-LlQ"/>
                                         <constraint firstItem="yoX-ez-4Tm" firstAttribute="leading" secondItem="2Nw-VB-xv2" secondAttribute="leading" constant="20" symbolic="YES" id="6mb-oJ-QA1"/>
                                         <constraint firstItem="P2G-Xh-cjV" firstAttribute="bottom" secondItem="2Nw-VB-xv2" secondAttribute="bottomMargin" id="AcI-9y-KKM"/>
                                         <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="P2G-Xh-cjV" secondAttribute="trailing" constant="20" symbolic="YES" id="Jsj-ub-u09"/>
+                                        <constraint firstItem="P2G-Xh-cjV" firstAttribute="leading" secondItem="yoX-ez-4Tm" secondAttribute="trailing" constant="15" id="M8r-O1-JUU"/>
                                         <constraint firstItem="P2G-Xh-cjV" firstAttribute="top" secondItem="2Nw-VB-xv2" secondAttribute="topMargin" id="cCa-ew-qvI"/>
                                     </constraints>
                                 </tableViewCellContentView>
@@ -84,10 +84,10 @@
             </objects>
             <point key="canvasLocation" x="589.85507246376812" y="144.64285714285714"/>
         </scene>
-        <!--Table View Controller-->
+        <!--New Note Table View Controller-->
         <scene sceneID="Wgi-6u-yZ5">
             <objects>
-                <tableViewController id="rAe-Wc-s5Y" sceneMemberID="viewController">
+                <tableViewController id="rAe-Wc-s5Y" customClass="NewNoteTableViewController" customModule="Notepad" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="nEx-ce-Niz">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -168,11 +168,25 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="wbq-HW-AWX">
-                        <barButtonItem key="leftBarButtonItem" title="Cansel" id="gfj-sj-MR5"/>
-                        <barButtonItem key="rightBarButtonItem" title="Save" id="Bt6-cC-adT"/>
+                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="gfj-sj-MR5">
+                            <connections>
+                                <action selector="cancelButtonAction:" destination="rAe-Wc-s5Y" id="rXX-0m-Us4"/>
+                                <segue destination="IQs-f6-Rf2" kind="unwind" unwindAction="unwindSegue:" id="Ql3-HN-tJb"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Save" id="Bt6-cC-adT">
+                            <connections>
+                                <action selector="saveButtonAction:" destination="rAe-Wc-s5Y" id="LcA-W6-GbL"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="mainText" destination="9K3-F4-fRj" id="522-CH-1qf"/>
+                        <outlet property="theme" destination="1ev-Gn-4nk" id="WrW-3O-wsw"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HcU-nP-gJa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="IQs-f6-Rf2" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="2279.7101449275365" y="144.64285714285714"/>
         </scene>

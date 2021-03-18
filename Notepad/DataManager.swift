@@ -10,7 +10,6 @@ import RealmSwift
 let realm = try! Realm()
 
 class DataManager {
-    
     static func saveData(_ newNote: Note) {
         try! realm.write {
             realm.add(newNote)
