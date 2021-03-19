@@ -15,9 +15,20 @@ class MainViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        testForFirstLaunch()
+        
         notes = realm.objects(Note.self)
     }
 
+    private func testForFirstLaunch() {
+        if !UserDefaults.standard.bool(forKey: "isFirstLaunch") {
+            UserDefaults.standard.setValue(true, forKey: "isFirstLaunch")
+            try! realm.write {
+                realm.add(Note(theme: "Default", text: "Default", date: "Default"))
+            }
+        }
+    }
+    
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -39,6 +50,11 @@ class MainViewController: UITableViewController {
     func delete(rowIndexPathAt indexPath: IndexPath) -> UIContextualAction {
         let action = UIContextualAction(style: .destructive, title: "Delete") { [weak self] (_, _, _) in
             guard let self = self else {return}
+            /* TODO: Не забыть доделать
+            let alert = UIAlertController(title: "Do you wand to delete?", message: "This action cannot be undone", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: .destructive))
+            self.present(alert, animated: true)
+             */
             let note = self.notes[indexPath.row]
             DataManager.deleteData(note)
             self.tableView.deleteRows(at: [indexPath], with: .automatic)
@@ -48,33 +64,21 @@ class MainViewController: UITableViewController {
         return action
     }
 
-    func edit(rowIndexPath indexPath: IndexPath) -> UIContextualAction {
-        let action = UIContextualAction(style: .normal, title: "Edit") { [weak self] (_, _, _) in
-            let alert = UIAlertController(title: "Do you wand to edit", message: "grgege", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "Ok", style: .default))
-            self?.present(alert, animated: true)
-        }
-        
-        return action
-    }
-    
     override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        let edit = self.edit(rowIndexPath: indexPath)
         let delete = self.delete(rowIndexPathAt: indexPath)
-        let swipe = UISwipeActionsConfiguration(actions: [delete, edit])
+        let swipe = UISwipeActionsConfiguration(actions: [delete])
         
         return swipe
     }
     
-//    override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-//        let note = notes[indexPath.row]
-//        let deleteDataAction = UITableViewRowAction(style: .default, title: "Delete") { (_, _) in
-//            DataManager.deleteData(note)
-//            tableView.deleteRows(at: [indexPath], with: UITableView.RowAnimation.automatic)
-//        }
-//
-//        return [deleteDataAction]
-//    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "SegueToChangeNote" {
+            guard let index = tableView.indexPathForSelectedRow else {return}
+            let changedNote = notes[index.row]
+            let editedNoteViewController = segue.destination as! NoteTableViewController
+            editedNoteViewController.changedNote = changedNote
+        }
+    }
     
     @IBAction func unwindSegue(_ segue: UIStoryboardSegue) {
         tableView.reloadData()

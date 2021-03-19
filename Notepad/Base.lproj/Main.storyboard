@@ -64,6 +64,7 @@
                                     <outlet property="dateLabel" destination="Til-8e-WLn" id="OW4-Yk-Mt0"/>
                                     <outlet property="mainTextLabel" destination="P2G-Xh-cjV" id="Sul-SV-wwh"/>
                                     <outlet property="themeLabel" destination="GlR-8y-bju" id="cOX-rm-T3k"/>
+                                    <segue destination="rAe-Wc-s5Y" kind="show" identifier="SegueToChangeNote" id="4Xe-7N-aYy"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -82,14 +83,14 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Gzy-o8-Xdm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="589.85507246376812" y="144.64285714285714"/>
+            <point key="canvasLocation" x="632" y="144"/>
         </scene>
-        <!--New Note Table View Controller-->
+        <!--Note Table View Controller-->
         <scene sceneID="Wgi-6u-yZ5">
             <objects>
-                <tableViewController id="rAe-Wc-s5Y" customClass="NewNoteTableViewController" customModule="Notepad" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="rAe-Wc-s5Y" customClass="NoteTableViewController" customModule="Notepad" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="nEx-ce-Niz">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="716"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <sections>
@@ -171,24 +172,24 @@
                         <barButtonItem key="leftBarButtonItem" title="Cancel" id="gfj-sj-MR5">
                             <connections>
                                 <action selector="cancelButtonAction:" destination="rAe-Wc-s5Y" id="rXX-0m-Us4"/>
-                                <segue destination="IQs-f6-Rf2" kind="unwind" unwindAction="unwindSegue:" id="Ql3-HN-tJb"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Save" id="Bt6-cC-adT">
                             <connections>
-                                <action selector="saveButtonAction:" destination="rAe-Wc-s5Y" id="LcA-W6-GbL"/>
+                                <action selector="saveButtonAction:" destination="rAe-Wc-s5Y" id="ob3-Xm-uoI"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="mainText" destination="9K3-F4-fRj" id="522-CH-1qf"/>
                         <outlet property="theme" destination="1ev-Gn-4nk" id="WrW-3O-wsw"/>
+                        <segue destination="IQs-f6-Rf2" kind="unwind" identifier="UnwindToMain" unwindAction="unwindSegue:" id="UdK-MD-xYT"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HcU-nP-gJa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="IQs-f6-Rf2" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="2279.7101449275365" y="144.64285714285714"/>
+            <point key="canvasLocation" x="1406" y="144"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="NHG-8e-gP1">
@@ -204,7 +205,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yiH-uB-TaT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-298" y="145"/>
+            <point key="canvasLocation" x="-148" y="143"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="QKW-eX-tpZ">
@@ -222,9 +223,12 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fsC-9Q-DgY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1421.7391304347827" y="144.64285714285714"/>
+            <point key="canvasLocation" x="1406" y="-598"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="4Xe-7N-aYy"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
