@@ -7,7 +7,7 @@
 
 import UIKit
 
-class NoteTableViewController: UITableViewController {
+class NoteTableViewController: UITableViewController, UITextFieldDelegate {
 
     var changedNote: Note?
     @IBOutlet weak var theme: UITextField!
@@ -19,6 +19,20 @@ class NoteTableViewController: UITableViewController {
         if let tmpNote = changedNote {
             changeNotePrepare(forNote: tmpNote)
         }
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
+
+        view.addGestureRecognizer(tap)
+    }
+    
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+
+        return true
     }
     
     private func changeNotePrepare(forNote changedNote: Note) {

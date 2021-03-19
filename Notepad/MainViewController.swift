@@ -18,6 +18,8 @@ class MainViewController: UITableViewController {
         testForFirstLaunch()
         
         notes = realm.objects(Note.self)
+        
+        tableView.tableFooterView = UIView()
     }
 
     private func testForFirstLaunch() {
