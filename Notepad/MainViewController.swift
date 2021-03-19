@@ -52,11 +52,6 @@ class MainViewController: UITableViewController {
     func delete(rowIndexPathAt indexPath: IndexPath) -> UIContextualAction {
         let action = UIContextualAction(style: .destructive, title: "Delete") { [weak self] (_, _, _) in
             guard let self = self else {return}
-            /* TODO: Не забыть доделать
-            let alert = UIAlertController(title: "Do you wand to delete?", message: "This action cannot be undone", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "Ok", style: .destructive))
-            self.present(alert, animated: true)
-             */
             let note = self.notes[indexPath.row]
             DataManager.deleteData(note)
             self.tableView.deleteRows(at: [indexPath], with: .automatic)
