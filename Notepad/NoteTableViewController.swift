@@ -77,6 +77,7 @@ class NoteTableViewController: UITableViewController, UITextFieldDelegate {
         }
     }
     
-
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//    }
 
 }
