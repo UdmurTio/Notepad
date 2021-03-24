@@ -1,2 +1,2 @@
 # Notepad
-This app based on UITableViewController.
+This app based on UITableView.
